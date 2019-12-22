@@ -1,9 +1,6 @@
 package LeetCode;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @program: LeetCode
@@ -24,7 +21,12 @@ public class Medium_QueueReconstructionByHeight {
             people[i][1] = sc.nextInt();
         }
         people = reconstructQueue(people);
+        for (int[] a: people)
+            System.out.println(a[0]+" "+a[1]);
     }
+    //先按照高矮排序，高的站在前面
+    //在按着第二位排序，小的站在前面
+    //然后用list里面的add函数，把该人放到要在的地方
     public static int[][] reconstructQueue(int[][] people){
         Arrays.sort(people, new Comparator<int[]>() {
             @Override
@@ -43,12 +45,13 @@ public class Medium_QueueReconstructionByHeight {
                     return -1;
             }
         });
-        for (int[] a: people)
-            System.out.println(a[0] +" "+ a[1]);
-        LinkedList<int[]> list = new LinkedList<>();
-        for (int i=0;i<people.length;i++){
-            
+        List<int[]> list = new ArrayList<>();
+        for (int[] a: people){
+            list.add(a[1], a);
         }
-        return people;
+        int[][] sort = new int[list.size()][2];
+        for (int i=0;i<list.size();i++)
+            sort[i] = list.get(i);
+        return sort;
     }
 }
