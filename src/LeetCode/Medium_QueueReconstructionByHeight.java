@@ -46,6 +46,7 @@ public class Medium_QueueReconstructionByHeight {
         for (int[] a: people)
             System.out.println(a[0] +" "+ a[1]);
         LinkedList<int[]> list = new LinkedList<>();
+
         for (int i=0;i<people.length;i++){
             
         }
