@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,7 +14,7 @@ public class Medium_CountingBits {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
-        int[] count = countBits(a);
+        int[] count = countBits2(a);
         for (int b : count)
             System.out.println(b);
     }
@@ -33,5 +35,12 @@ public class Medium_CountingBits {
         if (num==1)
             res++;
         return res;
+    }
+    public static int[] countBits2(int num){
+        int[] countBits = new int[num+1];
+        countBits[0] = 0;
+        for (int i=1;i<=num;i++)
+            countBits[i] = countBits[i/2] +(i%2);
+        return countBits;
     }
 }
