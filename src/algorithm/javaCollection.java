@@ -5,9 +5,18 @@ import java.util.*;
 //集合类的用法
 public class javaCollection {
     public static void main(String[] args){
+        //定义范围可以比较大，new必须具体
+        Map<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        Queue<Integer> queue = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
+        Hashtable<Integer, Integer> hashtable = new Hashtable<>();
+        HashSet<Integer> hashSet = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
+
 //        listExample();
 //        setExample();
-        sollectionExample();
+//        sollectionExample();
     }
     public static void sollectionExample(){
         HashMap<Integer,Integer> hashMap = new HashMap<>();
