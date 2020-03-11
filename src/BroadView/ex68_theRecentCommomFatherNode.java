@@ -57,7 +57,7 @@ public class ex68_theRecentCommomFatherNode {
         if (findRoute(root.left,p,ans))
             return true;
         if (findRoute(root.right,p,ans))
-            return false;
+            return true;
         ans.remove(ans.size()-1);
         return false;
     }
