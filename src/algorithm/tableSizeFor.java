@@ -1,8 +1,11 @@
 package algorithm;
 
-public class HashMap {
+import java.util.HashMap;
+import java.util.Map;
+
+public class tableSizeFor {
     public static void main(String[] args){
-        HashMap hashmap = new HashMap();
+        Map  map = new HashMap();
         int cap1 = 2;
         int cap2 = 7;
         int cap3 = 0;
