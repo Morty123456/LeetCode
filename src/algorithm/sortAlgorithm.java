@@ -136,9 +136,11 @@ public class sortAlgorithm {
     }
 //  堆排序
     public void heapSort(int[] arr){
+        // 构建大顶堆
         for (int i=arr.length/2-1;i>=0;i--){
             adjustHeap(arr, i, arr.length);
         }
+        // 把最大的放在右下角
         for (int j=arr.length-1;j>0;j--){
             swap(arr,0,j);
             adjustHeap(arr,0,j);
