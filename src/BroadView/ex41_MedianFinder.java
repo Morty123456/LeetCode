@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 public class ex41_MedianFinder {
     public static void main(String[] args){
         int a = 1, b = 2;
-        System.out.println((a+b)/2 +"  "+ (a+b)*0.5);
+        System.out.println((a+b)/2.0 +"  "+ (a+b)*0.5);
 //        MedianFinder();
 //        addNum(1);
 //        addNum(2);
