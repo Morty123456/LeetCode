@@ -2,40 +2,35 @@ package NowCoder;
 
 import DesignPatten.ResponsibilityChain.Majordomo;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 public class wangyi_niuniuFindJob {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
-        int[][] job = new int[N][2];
-        for (int i=0;i<N;i++){
-            job[i][0] = sc.nextInt();
-            job[i][1] = sc.nextInt();
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] ai = new int[m+n];
+        for (int i=0;i<n;i++){
+            int di = sc.nextInt();
+            ai[i] = di;
+            int pi = sc.nextInt();
+            map.put(di, pi);
         }
-        int[] ability = new int[M];
-        for (int i=0;i<M;i++)
-            ability[i] = sc.nextInt();
-        int[] income = new int[M];
-        Arrays.sort(job, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2){
-                return (o1[0]-o2[0]);
-            }
-        });
-        for (int i=0;i<M;i++){
-            int j=0;
-            income[i]=0;
-            while (j<N && ability[i]>=job[j][0]){
-                income[i] = Math.max(income[i], job[j][1]);
-                j++;
-            }
-
+        int[] bi = new int[m];
+        for (int i=0;i<m;i++){
+            ai[i+n] = sc.nextInt();
+            bi[i] = ai[i+n];
+            if (!map.containsKey(ai[i+n]))
+                map.put(ai[i+n], 0);
         }
-        for (int in : income)
-            System.out.println(in);
+        Arrays.sort(ai);
+        int ma = 0;
+        for (int i=0;i<m+n;i++){
+            ma = Math.max(ma, map.get(ai[i]));
+            map.put(ai[i], ma);
+        }
+        for (int i=0;i<m;i++)
+            System.out.println(map.get(bi[i]));
     }
 }
