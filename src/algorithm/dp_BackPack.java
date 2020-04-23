@@ -8,6 +8,7 @@ public class dp_BackPack {
 //        System.out.print(ZeroOneBackPack(value, weight, space));
 //        System.out.print(ZeroOneBackPackSpaceComplexity(value, weight, space));
         CompleteBackpack(value, weight, space);
+        CompleteBackpackBeter(value, weight, space);
     }
     //01背包问题，每个物品只有一个
     public static int ZeroOneBackPack(int[] value, int[] weight, int space){
@@ -46,6 +47,15 @@ public class dp_BackPack {
                 }
             }
         }
-        System.out.print(dp[length-1][space]);
+        System.out.println(dp[length-1][space]);
+    }
+    public static void CompleteBackpackBeter(int[] value, int[] weight, int space){
+        int length = value.length;
+        int[] dp = new int[space+1];
+        for (int i=1;i<length;i++){
+            for (int j=weight[i];j<=space;j++)
+                dp[j] = Math.max(dp[j], dp[j-weight[i]]+value[i]);
+        }
+        System.out.println(dp[space]);
     }
 }
