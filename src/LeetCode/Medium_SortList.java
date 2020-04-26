@@ -52,6 +52,7 @@ class ListNode{
         ListNode node = this;
         while (node!=null){
             str.append(node.val);
+            str.append(" ");
             node=node.next;
         }
         return str.toString();
