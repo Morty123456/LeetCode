@@ -14,15 +14,15 @@ public class Hard_maxPathSum {
     public static int max_gain(TreeNode node){
         if (node==null)
             return 0;
-        //结点左子树最大路径
+        //结点左子树 里面的最大路径
         int left_gain = Math.max(max_gain(node.left), 0);
-        //结点右子树最大路径
+        //结点右子树 里面的最大路径
         int right_gain = Math.max(max_gain(node.right), 0);
-        //此节点作为最大路径的顶点，得到的值
+        //此节点作为最大路径的顶点，得到的最大路径的值
         int price_newpath = node.val+left_gain+right_gain;
-        //是否比已有值大
+        //是否比已有的最大值大
         max_sum = Math.max(max_sum, price_newpath);
-        //返回包含此节点的最大单链路径
+        //返回此节点的最大单链路径
         return node.val+Math.max(right_gain, left_gain);
     }
 }
