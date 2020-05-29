@@ -16,7 +16,7 @@ public class A_makeTreeByNums {
         TreeNode root = a.makeTree(nums);
         a.preOrderTraveral(root);
     }
-    public TreeNode makeTree(int[] nums){
+    public static TreeNode makeTree(int[] nums){
         TreeNode root = new TreeNode(nums[0]);
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
