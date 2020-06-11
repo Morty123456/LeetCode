@@ -1,4 +1,4 @@
-package BroadView;
+package BroadView.SecondTime;
 
 import java.util.Scanner;
 
