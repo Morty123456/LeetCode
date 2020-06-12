@@ -47,7 +47,7 @@ public class buildTree {
     //先序遍历的第一个就是根节点
     //然后把先序和中序的数组分成左子树和右子树
     //递归进行调用，建立二叉树
-    //重点和难点是，找到先序遍历中的，左子树部分和右子树部分
+    //重点和难点是，找到先序遍历中，左子树部分和右子树部分
     public static TreeNode buildTree2(int[] preorder, Map map, int preStrat, int inStart, int inEnd){
         if (inStart>inEnd)
             return null;
