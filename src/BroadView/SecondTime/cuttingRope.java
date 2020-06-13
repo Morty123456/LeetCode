@@ -1,25 +1,26 @@
 package BroadView.SecondTime;
 
-import java.util.Map;
+import java.math.BigInteger;
 
 public class cuttingRope {
     public static void main(String[] args){
-        System.out.println(cuttingRope(10));
+        System.out.println(cuttingRope(120));
     }
     public static int cuttingRope(int n){
         if (n==2)
             return 1;
         if (n==3)
             return 2;
-        int[] dp = new int[n+1];
-        dp[1]=1;dp[2]=2;dp[3]=3;
+        BigInteger[] dp = new BigInteger[n+1];
+        dp[1] = new BigInteger("1");
+        dp[2] = new BigInteger("2");
+        dp[3] = new BigInteger("3");
         for(int i=4;i<=n;i++){
-            int max = 0;
+            dp[i] = new BigInteger("0");
             for (int j=i/2;j<i;j++){
-                max = Math.max(max,dp[j]*dp[i-j]);
+                dp[i] = dp[i].max(dp[j].multiply(dp[i-j]));
             }
-            dp[i]=max;
         }
-        return dp[n];
+        return dp[n].mod(new BigInteger("1000000007")).intValue();
     }
 }
