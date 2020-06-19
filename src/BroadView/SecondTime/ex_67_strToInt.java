@@ -21,6 +21,7 @@ public class ex_67_strToInt {
         int max = Integer.MAX_VALUE/10;
         while (i<length){
             if (ch[i]<='9' && ch[i]>='0'){
+                //越界判断很巧妙，如果sum==max时，只要>7，看似没有考虑 MIN，其实无论是 8 还是越界，返回的都是 MIN
                 if (sum<max || (sum==max && ch[i]<='7') ){
                     sum = sum*10+ch[i]-'0';
                     i++;
