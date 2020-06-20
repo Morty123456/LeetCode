@@ -1,6 +1,6 @@
 package BroadView.SecondTime;
 
-public class e68_2_lowestCommonAncestor {
+public class ex_68_2_lowestCommonAncestor {
     public static void main(String[] args){
 
     }
