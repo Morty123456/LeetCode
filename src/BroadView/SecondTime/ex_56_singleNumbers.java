@@ -5,7 +5,7 @@ package BroadView.SecondTime;
  * @time: 2020/6/28 14:19
  * @description:
  */
-public class ex_55_singleNumbers {
+public class ex_56_singleNumbers {
     public static void main(String[] args){
         int[] num = {1,2,10,4,1,4,3,3};
         int[] res = singleNumbers(num);
