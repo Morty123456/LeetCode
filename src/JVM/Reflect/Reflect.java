@@ -2,6 +2,8 @@ package JVM.Reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 /**
  * @author: wzh
@@ -12,7 +14,10 @@ public class Reflect {
     public static void main(String[] args) throws Exception{
 //        fanshe();
 //        Constructors();
-        Field();
+//        Field();
+//        Method();
+//        MethodMain();
+        fanxing();
     }
     //获取class对象
     public static void fanshe(){
@@ -88,5 +93,50 @@ public class Reflect {
         f.setAccessible(true);
         f.set(object, "19887668678");
         System.out.println(student);
+    }
+    //获取成员方法
+    public static void Method() throws Exception{
+        //获取class对象
+        Class stuClass = Class.forName("JVM.Reflect.Student");
+        System.out.println("------------获取所有公有方法--------------");
+        Method[] methods = stuClass.getMethods();
+        for (Method method : methods)
+            System.out.println(method);
+        System.out.println("------------获取所有方法--------------");
+        methods = stuClass.getDeclaredMethods();
+        for (Method m : methods)
+            System.out.println(m);
+        System.out.println("------------获取公有的show1方法--------------");
+        Method m = stuClass.getMethod("show1", String.class);
+        System.out.println(m);
+        Object object = stuClass.getConstructor().newInstance();
+        //invoke就是调用method的方法，在这里就是调用m方法
+        m.invoke(object,"刘德华");
+        System.out.println("------------获取私有的show4方法--------------");
+        m = stuClass.getDeclaredMethod("show4", int.class);
+        System.out.println(m);
+        m.setAccessible(true);
+        //下面的Object是返回值
+        Object re = m.invoke(object, 20);
+        System.out.println(re);
+    }
+    //获取main方法
+    public static void MethodMain() throws Exception{
+        //获取student字节码对象
+        Class clazz = Class.forName("JVM.Reflect.Student");
+        //获取main方法
+        Method methodMain = clazz.getMethod("main", String[].class);
+        methodMain.invoke(null, (Object)new String[]{"a","b","c"});
+    }
+    //越过泛型检查
+    public static void fanxing() throws Exception{
+        ArrayList<String> strList = new ArrayList<>();
+        strList.add("aaa");
+        strList.add("bbb");
+        Class listClass = strList.getClass();
+        Method method = listClass.getMethod("add", Object.class);
+        method.invoke(strList, "100");
+        for (Object obj : strList)
+            System.out.println(obj);
     }
 }
