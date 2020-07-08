@@ -14,10 +14,11 @@ public class Reflect {
     public static void main(String[] args) throws Exception{
 //        fanshe();
 //        Constructors();
-        Field();
+//        Field();
 //        Method();
 //        MethodMain();
 //        fanxing();
+        jicheng();
     }
     //获取class对象
     public static void fanshe(){
@@ -138,5 +139,15 @@ public class Reflect {
         method.invoke(strList, "100");
         for (Object obj : strList)
             System.out.println(obj);
+    }
+
+    //继承自student
+    public static void jicheng() throws Exception{
+        Class clazz = Class.forName("JVM.Reflect.Student_son");
+        Field[] fields = clazz.getDeclaredFields();
+        //获取继承自父类的属性
+        Field[] fields2 = clazz.getSuperclass().getDeclaredFields();
+        for(Field f : fields2)
+            System.out.println(f);
     }
 }
