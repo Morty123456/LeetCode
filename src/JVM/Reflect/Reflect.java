@@ -14,10 +14,10 @@ public class Reflect {
     public static void main(String[] args) throws Exception{
 //        fanshe();
 //        Constructors();
-//        Field();
+        Field();
 //        Method();
 //        MethodMain();
-        fanxing();
+//        fanxing();
     }
     //获取class对象
     public static void fanshe(){
