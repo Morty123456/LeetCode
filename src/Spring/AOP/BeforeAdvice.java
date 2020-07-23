@@ -21,6 +21,7 @@ public class BeforeAdvice implements Advice {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //在目标方法前调用通知
         methodInvocation.invoke();
-        return method.invoke(bean, args);
+        Object invoke = method.invoke(bean, args);
+        return invoke;
     }
 }
