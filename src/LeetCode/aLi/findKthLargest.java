@@ -8,7 +8,8 @@ package LeetCode.aLi;
 public class findKthLargest {
     public static void main(String[] args){
         int[] nums = {3,2,3,1,2,4,5,5,6};
-        System.out.println(findKthLargest(nums, 4));
+//        System.out.println(findKthLargest(nums, 4));
+        System.out.println(findKthLargest_quickSort(nums, 4));
     }
     public static int findKthLargest(int[] nums, int k){
         //构建小顶堆
@@ -36,5 +37,30 @@ public class findKthLargest {
         }
         nums[begin] = temp;
     }
-
+    //快速排序
+    public static int findKthLargest_quickSort(int[] nums, int k){
+        k = nums.length-k;
+        int num = quickSort(nums, 0, nums.length-1, k);
+        return num;
+    }
+    public static int quickSort(int[] nums, int left, int right, int k){
+        int par = partition(nums, left, right);
+        if (par==k)
+            return nums[par];
+        else
+            return par<k ? quickSort(nums, par+1, right, k) : quickSort(nums, left, par-1, k);
+    }
+    public static int partition(int[] nums, int left, int right){
+        int key = nums[left];
+        while (left < right){
+            while (nums[right]>=key && left<right)
+                right--;
+            nums[left] = nums[right];
+            while (nums[left]<=key && left<right)
+                left++;
+            nums[right] = nums[left];
+        }
+        nums[right] = key;
+        return right;
+    }
 }
