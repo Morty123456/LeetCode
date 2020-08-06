@@ -1,4 +1,4 @@
-package ConcurrencyProgramming;
+package ConcurrencyProgramming.多线程循环打印;
 
 /**
  * @author: wzh
@@ -17,6 +17,25 @@ public class PrintABA {
     }
 }
 class Number implements Runnable{
+    private int number = 1;
+    @Override
+    public void run() {
+        while (number<100){
+            synchronized (this){
+                System.out.println(Thread.currentThread().getName()+" "+number);
+                number++;
+                notify();
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+}
+class Number2 implements Runnable{
     private int number = 1;
     @Override
     public void run() {
