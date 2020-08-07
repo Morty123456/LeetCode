@@ -1,12 +1,18 @@
 package DesignPatten.danli;
 
-public class LHan {
+public class LHan{
     private static LHan instance;
     private LHan(){}
-    //是否可以支持多线程，就看此处有没有synchronized关键字
-    public synchronized static LHan getInstance(){
+    public static synchronized LHan getInstance(){
         if (instance==null)
             instance = new LHan();
         return instance;
+    }
+    public static LHan getInstance2(){
+        synchronized (LHan.class){
+            if (instance==null)
+                instance = new LHan();
+            return instance;
+        }
     }
 }

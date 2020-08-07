@@ -6,7 +6,7 @@ public class StaticClass {
         private static final StaticClass instance = new StaticClass();
     }
     private StaticClass(){}
-    public static final StaticClass getInstance(){
+    public static StaticClass getInstance(){
         return SingletonHolder.instance;
     }
 }
