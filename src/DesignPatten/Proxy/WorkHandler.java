@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * @time: 2020/7/8 21:33
  * @description:
  */
-//动态代理都必须实现 InvocationHandler 接口
+//动态代理类的 调用处理程序 都必须实现 InvocationHandler 接口
 public class WorkHandler implements InvocationHandler {
     //要代理的真实对象
     private Object obj;
