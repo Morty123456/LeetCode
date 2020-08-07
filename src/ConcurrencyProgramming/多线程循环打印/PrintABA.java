@@ -27,7 +27,7 @@ class Number implements Runnable{
                 //notify将等待队列中的线程，拿到同步队列中
                 notify();
                 try {
-                    if (number<=100)
+//                    if (number<=100)
                         //此线程：释放锁；进入等待队列，变为WAITING状态
                         wait();
                 } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ class Number implements Runnable{
                 }
             }
         }
-        System.out.println(Thread.currentThread().getName()+" "+number);
+        System.out.println(Thread.currentThread().getName()+" 》》》》》》》 "+number);
     }
 }
 class Number3 implements Runnable{

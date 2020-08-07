@@ -27,19 +27,19 @@ public class TwoLockPrinter implements Runnable{
                     //本线程打印完之后唤醒等待的线程，因为只有一个在等待
                     thisLock.notify();
                 }
-                try {
-                    //释放锁
-                    fontLock.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-//                if (i<PRINT_COUNT-1){
-//                    try {
-//                        fontLock.wait();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+//                try {
+//                    //释放锁
+//                    fontLock.wait();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
 //                }
+                if (i<PRINT_COUNT-1){
+                    try {
+                        fontLock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
