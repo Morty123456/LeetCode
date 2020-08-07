@@ -18,6 +18,13 @@ public class test {
 //        con.setAccessible(true);
 //        StaticClass newStaticClass = con.newInstance();
 //        System.out.println(staticClass==newStaticClass);
+
+        DoubleCheck doubleCheck = DoubleCheck.getInstance();
+        Constructor<DoubleCheck> doubleCheckConstructor = DoubleCheck.class.getDeclaredConstructor();
+        doubleCheckConstructor.setAccessible(true);
+        DoubleCheck newDouble = doubleCheckConstructor.newInstance();
+        System.out.println(doubleCheck.hashCode()+" "+newDouble.hashCode());
+
         MeiJu.INSTANCE.anyMethod();
     }
 }
