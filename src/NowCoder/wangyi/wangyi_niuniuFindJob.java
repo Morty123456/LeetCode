@@ -1,4 +1,4 @@
-package NowCoder;
+package NowCoder.wangyi;
 
 import DesignPatten.ResponsibilityChain.Majordomo;
 

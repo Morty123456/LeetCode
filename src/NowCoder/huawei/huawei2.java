@@ -1,4 +1,4 @@
-package NowCoder;
+package NowCoder.huawei;
 
 import java.util.Scanner;
 import java.util.Stack;

@@ -1,4 +1,4 @@
-package NowCoder;
+package NowCoder.meituan;
 
 import java.util.HashSet;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package NowCoder;
+package NowCoder.ningmeng;
 
 import java.util.HashMap;
 import java.util.LinkedList;

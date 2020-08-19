@@ -1,4 +1,4 @@
-package NowCoder;
+package NowCoder.ningmeng;
 
 import java.util.LinkedList;
 import java.util.Scanner;
