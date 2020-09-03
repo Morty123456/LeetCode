@@ -7,7 +7,7 @@ package ConcurrencyProgramming.Lock;
  */
 public class BlockQueueTest {
     public static void main(String[] args) {
-        BlockQueueSynchronized blockQueueSynchronized = new BlockQueueSynchronized(5);
+        BlockQueue blockQueueSynchronized = new BlockQueue(5);
         Thread t1 = new Thread(()->{
             for (int i = 0; i < 100; i++) {
                 blockQueueSynchronized.add(i);
@@ -21,7 +21,7 @@ public class BlockQueueTest {
         });
         Thread t2 = new Thread(()->{
             while (true){
-                int i = blockQueueSynchronized.get();
+                int i = blockQueueSynchronized.take();
                 System.out.println("弹出 "+i);
                 try {
                     Thread.sleep(500);

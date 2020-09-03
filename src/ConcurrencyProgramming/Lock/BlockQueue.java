@@ -32,17 +32,19 @@ public class BlockQueue {
     public void add(int data){
         try {
             lock.lock();
-            while (size>=capacity){
-                System.out.println("阻塞队列已满");
-                try {
+            try {
+                while (size>=capacity){
+                    System.out.println("阻塞队列已满");
                     isFull.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+            } catch (InterruptedException e) {
+                isFull.signal();
+                e.printStackTrace();
             }
+
             ++size;
             container.add(data);
-            isFull.signal();
+            isNull.signal();
         }finally {
             lock.unlock();
         }
@@ -56,8 +58,9 @@ public class BlockQueue {
             while (size==0){
                 System.out.println("阻塞队列已空");
                 try {
-                    isNull.wait();
+                    isNull.await();
                 } catch (InterruptedException e) {
+                    isNull.signal();
                     e.printStackTrace();
                 }
             }
