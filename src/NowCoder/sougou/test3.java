@@ -14,37 +14,27 @@ public class test3 {
         System.out.println(getPasswordCount(str));
     }
     public static long getPasswordCount (String password) {
-        int[] num = new int[password.length()];
-        for (int i=0; i<num.length; i++){
-            num[i] = password.charAt(i)-'0';
+        long res = 0;
+        for (int i = 0; i < 10; i++) {
+            res += dfs(password, "", i, 1,password.length());
         }
-        long count = 0;
-        for (int i=1; i<=9; i++){
-
-            ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
-            ArrayList<Integer> arrayList = new ArrayList<>();
-            lists.add(arrayList);
-            arrayList.add(i);
-
-            int j = 1;
-            while (j<num.length) {
-
-                for (ArrayList<Integer> a : lists){
-                    int now = a.get(a.size()-1)+num[j];
-                    if (now%2==0){
-                        a.add(now/2);
-                    }else {
-                        ArrayList<Integer> b = new ArrayList<>(a);
-                        a.add(now/2);
-                        b.add(now/2+1);
-                        lists.add(b);
-                    }
-                }
-                j++;
+        return res;
+    }
+    public static boolean flage = false;
+    public static long dfs(String password, String cur, int num, int curLength, int passwordLength){
+        cur += num;
+        if (curLength == passwordLength){
+            if (cur.equals(password)){
+                flage = true;
             }
-            count += lists.size();
-
+            return 1;
         }
-        return count;
+        int curNum = password.charAt(curLength)-'0';
+        int sum = curNum + num;
+        if ((sum&2)==1){
+            return dfs(password, cur, sum/2, curLength+1, passwordLength) + dfs(password, cur, sum/2+1, curLength+1, passwordLength);
+        }else {
+            return dfs(password, cur, sum/2, curLength+1, passwordLength);
+        }
     }
 }
